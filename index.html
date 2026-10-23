@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Quality Quest</title>
+  <meta name="description" content="Quality Quest: Stop the Defects. A five-stage quality inspection game: receiving inspection, production line, metrology lab, root cause investigation and a final audit.">
+  <meta name="theme-color" content="#06111f">
+  <meta property="og:title" content="Quality Quest: Stop the Defects">
+  <meta property="og:description" content="Five stages. Real skills. Can you earn the title of Mister Quality?">
+  <meta property="og:image" content="assets/img/crate.jpg">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Barlow:wght@500;600;700&family=Barlow+Condensed:wght@600;700&family=Share+Tech+Mono&family=Great+Vibes&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Shared SVG gradients used by part drawings and badges -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <linearGradient id="steel" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eef2f6"/><stop offset=".45" stop-color="#b6c1cd"/><stop offset="1" stop-color="#7d8b9b"/></linearGradient>
+  <radialGradient id="boreg" cx="50%" cy="45%"><stop offset="0" stop-color="#05090f"/><stop offset=".75" stop-color="#1c2836"/><stop offset="1" stop-color="#53657a"/></radialGradient>
+  <radialGradient id="bolt" cx="38%" cy="35%"><stop offset="0" stop-color="#f5f7f9"/><stop offset="1" stop-color="#6b7a8c"/></radialGradient>
+  <linearGradient id="goldmedal" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff2a8"/><stop offset=".5" stop-color="#ffcc1f"/><stop offset="1" stop-color="#c98a00"/></linearGradient>
+  <radialGradient id="brass" cx="38%" cy="35%"><stop offset="0" stop-color="#ffe6a0"/><stop offset="1" stop-color="#a3711f"/></radialGradient>
+</defs></svg>
+
+  <div class="bgart" id="bgart"></div>
+  <div class="vignette"></div>
+  <main class="wrap" id="app" aria-live="polite"></main>
+  <div id="modalRoot"></div>
+
+  <noscript><p style="padding:24px;color:#fff">Quality Quest needs JavaScript to run.</p></noscript>
+  <script src="js/game.js"></script>
+</body>
+</html>
