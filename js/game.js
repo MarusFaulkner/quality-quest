@@ -223,7 +223,7 @@ function renderLot(bump){
   app.innerHTML = topbar() + stats(bump) + `
   <section class="panel scene">
     <div class="art"><img src="${IMG.scene}" alt="Mister Quality inspecting parts at receiving">
-      <div class="plate"><div class="k">Incoming lot</div><div class="id">${L.id}</div><div class="sup">${L.supplier}</div><div class="qty">QF-2210 · QTY ${L.qty}</div></div>
+      <div class="plate"><div class="k">Incoming lot</div><div class="id">${L.id}</div><div class="sup">${L.supplier}</div><div class="qty">QF-2210 · QTY ${L.qty}</div><ul class="pcheck" aria-label="Receiving inspection checklist"><li>Drawing</li><li>Paperwork</li><li>Measurements</li><li>Visual check</li></ul></div>
     </div>
       <div class="say s1say"><div class="face">${faceImg(S.i===0?"confident":"thinking")}</div>
         <div class="bubble">${S.i===0?"Check the drawing, check the packet, then make the call.":["Read everything. Twice.","Don't trust it. Verify it.","Paperwork is part of the part.","The notes matter.","Check every sample, not just the first."][S.i%5]}</div></div>
@@ -778,7 +778,8 @@ function renderS3Play(){
   document.getElementById("j-out").onclick=()=>s3judge("OUT");
   s3step(1);
   T3.phase="read";
-  setTimeout(()=>{ if(T3&&T3.phase==="read"&&document.getElementById("steps")){ T3.phase="pick"; s3step(2); } },1300);
+  setTimeout(()=>{ if(T3&&T3.phase==="read"&&document.getElementById("steps")){ T3.phase="pick"; s3step(2);
+    const t=app.querySelector(".tool"); if(t && t.getBoundingClientRect().bottom>innerHeight) t.scrollIntoView({behavior:"smooth",block:"end"}); } },1300);
 }
 
 function s3step(n){ app.querySelectorAll(".stp").forEach(e=>{const k=+e.dataset.n; e.classList.toggle("done",k<n); e.classList.toggle("on",k===n);}); }
@@ -932,7 +933,8 @@ const EVID = [
   {id:"pm",     title:"PM records",         sub:"Procedure QP-118",
    src:"Maintenance · PM system", body:"QP-118 requires a monthly system accuracy test (SAT) on the controlling thermocouple. Last sign-off: Aug 28. September and October are blank. The PM system has no overdue alert for this task."},
 ];
-const EVICON = {torque:ICON.gauge, cert:ICON.cert, pm:ICON.doc};
+const TORQUE_ICON = `<svg viewBox="0 0 24 24"><path d="M4.5 19.5l9.8-9.8" stroke="#6f8bb0" stroke-width="3.4" stroke-linecap="round"/><circle cx="16.6" cy="7.4" r="4.4" fill="#c9d2dc" stroke="#5a6e86" stroke-width="1.3"/><circle cx="16.6" cy="7.4" r="1.9" fill="#5a6e86"/><path d="M3 21l2.6-2.6" stroke="#e23b3b" stroke-width="3.4" stroke-linecap="round"/></svg>`;
+const EVICON = {torque:TORQUE_ICON, cert:ICON.cert, pm:ICON.doc};
 
 const STATEMENTS = [
   {t:"The flanges are bad and need to be fixed.", why:"Too vague. It doesn't say which parts, how many, where or when. You can't investigate \"bad.\""},
@@ -1382,7 +1384,7 @@ function s5save(){
 // ---------- Badges ----------
 const BADGES = [
   {id:"zero",    name:"Zero Escapes",        how:"No escapes in Stage 1 and Stage 2", icon:`<path d="M32 14l14 5v10c0 9-6 16-14 20-8-4-14-11-14-20V19z" fill="none" stroke="currentColor" stroke-width="3.4"/><path d="M25 31l5 5 9-10" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>`},
-  {id:"gauge",   name:"Perfect Gauge Picks", how:"Best gauge on all 8 parts in Stage 3", icon:`<path d="M16 22h32v6H16zM19 28v14h5l1-14M33 28v10h5V28M38 16h8v6h-8" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>`},
+  {id:"gauge",   name:"Perfect Gauge Picks", how:"Best gauge on all 8 parts in Stage 3", icon:`<circle cx="32" cy="27" r="13" fill="none" stroke="currentColor" stroke-width="3"/><path d="M32 16v3M32 35v3M21 27h3M40 27h3M24.2 19.2l2.1 2.1M37.7 19.2l-2.1 2.1" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M32 27l6-7" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><circle cx="32" cy="27" r="2.2" fill="currentColor"/><path d="M29 40h6v8h-6zM32 48v5" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>`},
   {id:"nodead",  name:"No Dead Ends",        how:"Solve Stage 4 without a single dead end", icon:`<circle cx="29" cy="29" r="10" fill="none" stroke="currentColor" stroke-width="3.6"/><path d="M36.5 36.5L47 47" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>`},
   {id:"contain", name:"Containment Pro",     how:"Draw the right containment line in Stage 5", icon:`<path d="M18 24l14-7 14 7v16l-14 7-14-7z" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linejoin="round"/><path d="M18 24l14 7 14-7M32 31v16" fill="none" stroke="currentColor" stroke-width="3"/><path d="M38 19l-4 2" stroke="currentColor" stroke-width="5"/>`},
   {id:"final",   name:"Perfect Final Call",  how:"Make the right call on shipment SH-9902", icon:`<path d="M23 17h18v8a9 9 0 01-18 0zM23 20h-5a5 5 0 005 7M41 20h5a5 5 0 01-5 7M29 34h6v5h-6zM24 39h16v5H24z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>`},
