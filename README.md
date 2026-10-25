@@ -6,7 +6,7 @@ A five-stage browser game that teaches real manufacturing quality skills, hosted
 
 ## Play
 
-Live at: `## Play
+Live at: 
 
 [**https://marusfaulkner.github.io/quality-quest/**](https://marusfaulkner.github.io/quality-quest/)
 
