@@ -10,8 +10,6 @@ Live at:
 
 [**https://marusfaulkner.github.io/quality-quest/**](https://marusfaulkner.github.io/quality-quest/)
 
-Works on phones and desktops. No install, no account, no build step.` once deployed (see below).
-
 Works on phones and desktops. No install, no account, no build step.
 
 ## The five stages
