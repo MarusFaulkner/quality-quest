@@ -6,7 +6,11 @@ A five-stage browser game that teaches real manufacturing quality skills, hosted
 
 ## Play
 
-Live at: `https://<your-username>.github.io/quality-quest/` once deployed (see below).
+Live at: `## Play
+
+[**https://marusfaulkner.github.io/quality-quest/**](https://marusfaulkner.github.io/quality-quest/)
+
+Works on phones and desktops. No install, no account, no build step.` once deployed (see below).
 
 Works on phones and desktops. No install, no account, no build step.
 
